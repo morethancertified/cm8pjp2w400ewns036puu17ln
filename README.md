@@ -9,8 +9,13 @@
 **Sprint:** Sprint 03/AWS Integration
 
 **Lab Setup**
+This lab requires resources to be deployed to AWS using CloudFormation. CloudFormation is used to ensure you don't lose state and control over the resources if this instance were to be deleted or fail. 
 
-**Launch Cloudformation script to Bootstrap the Lab Resources** \
+You should have supplied your AWS credentials during the lab setup. Otherwise, you'll need admin access to your AWS environment configured within this system. 
+
+Please inspect any files in the bootstrap directory before deploying. 
+
+**Launch Cloudformation script to Bootstrap the Lab Resources from the bootstrap directory** \
 `mtc-init --deploy`
 
 **Destroy the Lab Resources** \
