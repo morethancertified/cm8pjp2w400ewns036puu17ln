@@ -21,6 +21,8 @@ Please inspect any files in the bootstrap directory before deploying.
 **Destroy the Lab Resources** \
 `mtc-init --destroy`
 
+> **NOTE** If `mtc-init` does not work, run `source ~/.bashrc` and try again, or run it directly from the bootstrap directory.
+
 **Description:**
 
 Your team has been managing AWS resources manually, but now wants to bring their resources under Terraform control. You need to import existing AWS infrastructure (VPC, Subnets, and Security Group) into your Terraform configuration that belongs to your Team (Team A). This approach allows you to start managing these resources with Terraform without recreating them. These resources have been deployed using a CloudFormation template. This is available to you in the bootstrap directory, but to ensure there is no stale information, use data sources to fetch the information needed to import. Once you've imported the resources, don't forget to remove the Data Sources to ensure external modifications don't break your future deployments. 
