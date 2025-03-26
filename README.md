@@ -23,7 +23,7 @@ Please inspect any files in the bootstrap directory before deploying.
 
 **Description:**
 
-Your team has been managing AWS resources manually, but now wants to bring them under Terraform control. You need to import existing AWS infrastructure (VPC, Subnets, and Security Group) into your Terraform configuration using import blocks. This approach allows you to start managing these resources with Terraform without recreating them. These resources have been deployed using a CloudFormation template. This is available to you in the bootstrap directory, but to ensure there is no stale information, use data sources to fetch the information needed to import. \
+Your team has been managing AWS resources manually, but now wants to bring them under Terraform control. You need to import existing AWS infrastructure (VPC, Subnets, and Security Group) into your Terraform configuration using import blocks. This approach allows you to start managing these resources with Terraform without recreating them. These resources have been deployed using a CloudFormation template. This is available to you in the bootstrap directory, but to ensure there is no stale information, use data sources to fetch the information needed to import. Once you've imported the resources, don't forget to remove the Data Sources to ensure external modifications don't break your future deployments. 
 
 **Hint:** To simplify things, you may want to check out the `--generate-config-out` flag to simplify the process, but it may require some modification afterwards. 
 
@@ -35,4 +35,4 @@ Your team has been managing AWS resources manually, but now wants to bring them 
 
 - <a href="https://developer.hashicorp.com/terraform/language/import" target="_blank">Terraform Import Documentation</a>  
 - <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs" target="_blank">AWS Provider Documentation</a>
-- <a href="https://developer.hashicorp.com/terraform/language/import" target="_blank">Terraform Import Tutorial</a>
+- <a href="https://developer.hashicorp.com/terraform/language/import" target="_blank">Terraform Import Documentation</a>
