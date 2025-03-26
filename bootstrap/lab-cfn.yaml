@@ -1,5 +1,5 @@
 Resources:
-  MyVPC:
+  TeamAVPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.0.0.0/16
@@ -7,14 +7,14 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: MyVPC
+          Value: VPC-A
         - Key: Deployment
           Value: mtc-labs
 
-  Subnet1:
+  TeamASubnet1:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref MyVPC
+      VpcId: !Ref TeamAVPC
       CidrBlock: 10.0.1.0/24
       AvailabilityZone: !Select [ 0, !GetAZs '' ]
       Tags:
@@ -23,10 +23,10 @@ Resources:
         - Key: Deployment
           Value: mtc-labs
 
-  Subnet2:
+  TeamASubnet2a:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref MyVPC
+      VpcId: !Ref TeamAVPC
       CidrBlock: 10.0.2.0/24
       AvailabilityZone: !Select [ 1, !GetAZs '' ]
       Tags:
@@ -35,13 +35,59 @@ Resources:
         - Key: Deployment
           Value: mtc-labs
 
-  MySecurityGroup:
+  TeamASecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Security group for application deployment
-      VpcId: !Ref MyVPC
+      VpcId: !Ref TeamAVPC
       Tags:
         - Key: Name
-          Value: MySecurityGroup
+          Value: SecurityGroup
+        - Key: Deployment
+          Value: mtc-labs
+  TeamBVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: VPC-B
+        - Key: Deployment
+          Value: mtc-labs
+
+  TeamBSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref TeamBVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      Tags:
+        - Key: Name
+          Value: Subnet1
+        - Key: Deployment
+          Value: mtc-labs
+
+  TeamBSubnet2a:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref TeamBVPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: !Select [ 1, !GetAZs '' ]
+      Tags:
+        - Key: Name
+          Value: Subnet2
+        - Key: Deployment
+          Value: mtc-labs
+
+  TeamBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for application deployment
+      VpcId: !Ref TeamBVPC
+      Tags:
+        - Key: Name
+          Value: SecurityGroup
         - Key: Deployment
           Value: mtc-labs
