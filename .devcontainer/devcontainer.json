@@ -29,9 +29,7 @@
     "awsalias": "echo \"alias aws='awslocal'\" >> ~/.bashrc",
     "awsregion": "export AWS_DEFAULT_REGION='us-east-1' >> ~/.bashrc",
     "startls": "localstack start -d",
-    "cfnalias": "echo \"alias mtc-init='./bootstrap/mtc-init.sh'\" >> ~/.bashrc",
-    "mtcchmod": "sudo chmod +x ./bootstrap/mtc-init.sh"
-    // "gitpull": "git pull origin main" 
+    "gitpull": "git pull origin main"
   },
   "postStartCommand": {
     "deploy": "awslocal cloudformation deploy --stack-name mtc-stack --template-file './bootstrap/lab-cfn.yaml' --region us-east-1 --no-cli-pager"
