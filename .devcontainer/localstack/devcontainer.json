@@ -1,0 +1,37 @@
+{
+  "name": "Localstack Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/localstack/devcontainer-feature/localstack-cli": {
+      "version": "latest",
+      "awslocal": true,
+      "tflocal": true 
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": {
+    "mtccli": "curl -s https://app.morethancertified.com/install.sh | sh",
+    "deletecmd": "echo \"alias mtc-delete='gh cs delete -c ${CODESPACE_NAME}'\" >> ~/.bashrc",
+    "tfalias": "echo \"alias terraform='tflocal'\" >> ~/.bashrc",
+    "awsalias": "echo \"alias aws='awslocal'\" >> ~/.bashrc",
+    "awsregion": "export AWS_DEFAULT_REGION='us-east-1' >> ~/.bashrc",
+    "startls": "localstack start -d",
+    "gitpull": "git pull origin main"
+  },
+  "postStartCommand": {
+    "deploy": "awslocal cloudformation deploy --stack-name mtc-stack --template-file './bootstrap/lab-cfn.yaml' --region us-east-1 --no-cli-pager >> deploying.txt && mv deploying.txt deployed.txt"
+  }
+}
