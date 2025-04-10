@@ -30,5 +30,13 @@
     "awsregion": "export AWS_DEFAULT_REGION='us-east-1' >> ~/.bashrc",
     "startls": "localstack start -d",
     "gitpull": "git pull origin main"
+  },
+  "secrets": {
+    "aws_access_key_id": {
+      "description": "AWS Access Key ID"
+    },
+    "aws_secret_access_key": {
+      "description": "AWS Secret Access Key"
+    }
   }
 }
