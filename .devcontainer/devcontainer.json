@@ -32,6 +32,6 @@
     "gitpull": "git pull origin main"
   },
   "postStartCommand": {
-    "deploy": "awslocal cloudformation deploy --stack-name mtc-stack --template-file './bootstrap/lab-cfn.yaml' --region us-east-1 --no-cli-pager >> deploying.txt && mv deploying.txt deployed.txt"
+    "deploy": "awslocal cloudformation deploy --stack-name mtc-stack --template-file './bootstrap/lab-cfn.yaml' --region us-east-1 --no-cli-pager >> deploying.log && echo 'Deployed!' >> deploying.log && mv deploying.log deployed.log"
   }
 }
